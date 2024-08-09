@@ -89,7 +89,7 @@
             for (let i = 0; i < classLabels.length; i++) {
                 const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
-		newdata.datasets[0].data[i] = result.scores[i];
+		newdata.datasets[0].data[i] = result.scores[i].toFixed(2) * 100;
             }
 		chart.update();
         }, {
