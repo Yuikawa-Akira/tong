@@ -45,7 +45,7 @@
             labels:  ["トング", "雑音"],
             datasets: [
                 {
-                    data: [0,1],
+                    data: [],
                     backgroundColor: ["red",  "blue"],
                 },     
             ]
@@ -90,11 +90,12 @@
                 const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
-		  var newData = [
-		    { data: [result.scores[0],result.scores[1]] },
-  			];
-			chart.data.datasets[0].data = newData[0].data;
-			chart.update();
+    chart.data.datasets.forEach((dataset) => {
+                  dataset.data.push({
+result.scores,
+		  }
+				    chart.update();
+				    }
         }, {
             includeSpectrogram: true, // in case listen should return result.spectrogram
             probabilityThreshold: 0.75,
