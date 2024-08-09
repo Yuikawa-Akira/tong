@@ -55,27 +55,27 @@
                 const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
-			var myChart = new Chart(ctx, {
+	var myChart = new Chart(ctx, {
         type: "horizontalBar",
         data: {
             labels:  ["雑音", "トング"],  // Ｘ軸のラベル
             datasets: [
                 {
-                    data: [result.scores[0], result.scores[1]] ,                  // ★必須　系列Ａのデータ
+                    data: [result.scores[0], result.scores[1]] ,
                     backgroundColor: ["red",  "blue"],
                 },     
             ]
         },
-	options: {                       // オプション
+	options: {
             responsive: true,
-            scales: {                          // 軸設定
-                xAxes: [{                       // Ｘ軸設定
+            scales: {
+                xAxes: [{
                 }],
                 yAxes: [{
-                        display: true,                 // 表示の有無
-                        ticks: {                       // 目盛り
-                            min: 0,                        // 最小値
-                            max: 1,                       // 最大値
+                        display: true,
+                        ticks: {
+                            min: 0,
+                            max: 1,
                         },
                 }],
             },
