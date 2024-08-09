@@ -91,11 +91,9 @@
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
     chart.data.datasets.forEach((dataset) => {
-                  dataset.data.push({
-result.scores,
-		  }
-				    chart.update();
-				    }
+        dataset.data.push(result.scores);
+    });
+    chart.update();
         }, {
             includeSpectrogram: true, // in case listen should return result.spectrogram
             probabilityThreshold: 0.75,
