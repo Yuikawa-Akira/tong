@@ -90,7 +90,7 @@
                 const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
-			chart.data.datasets[0].data = result.scores[].data;
+			chart.data.datasets[0].data = result.scores[];
 			chart.update();
         }, {
             includeSpectrogram: true, // in case listen should return result.spectrogram
