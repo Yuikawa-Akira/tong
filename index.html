@@ -58,10 +58,11 @@
 	var myChart = new Chart(ctx, {
         type: "horizontalBar",
         data: {
-            labels:  ["雑音", "トング"],  // Ｘ軸のラベル
+            labels:  ["トング", "雑音"],  // Ｘ軸のラベル
             datasets: [
                 {
-                    data: [result.scores[0], result.scores[1]] ,
+					label: "", 
+                    data: [result.scores[1], result.scores[0]] ,
                     backgroundColor: ["red",  "blue"],
                 },     
             ]
