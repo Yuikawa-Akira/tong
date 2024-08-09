@@ -61,13 +61,15 @@
             labels:  ["トング", "雑音"],  // Ｘ軸のラベル
             datasets: [
                 {
-					label: "", 
-                    data: [result.scores[1], result.scores[0]] ,
+                    data: [result.scores[0], result.scores[1]] ,
                     backgroundColor: ["red",  "blue"],
                 },     
             ]
         },
 	options: {
+		　	legend: {
+   					display: false,
+   			},
             responsive: true,
             scales: {
                 xAxes: [{
