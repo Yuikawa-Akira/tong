@@ -43,14 +43,7 @@
                    	 backgroundColor: ["red",  "blue"],
 			}]
 		};
-
-    async function init() {
-	//グラフ追加
-		var ctx = document.getElementById("chart").getContext('2d');
-		var myChart = new Chart(ctx, {
-        type: "horizontalBar",
-        data: newdata,
-        		options: {
+	var options = {
 			tooltips: {
             		enabled: false,
 					},
@@ -70,9 +63,18 @@
                             max: 1,
                         },
                 	}],
-            	},
-        	}
-    	});
+            	}
+	}
+
+    async function init() {
+	//グラフ追加
+	var ctx = document.getElementById("chart").getContext('2d');
+	var myChart = new Chart(ctx, {
+        type: "horizontalBar",
+        data: newdata,
+        options: options
+	}
+				
         const recognizer = await createModel();
         const classLabels = recognizer.wordLabels(); // get class labels
         const labelContainer = document.getElementById("label-container");
