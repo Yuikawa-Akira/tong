@@ -90,8 +90,8 @@
                 const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
 		newdata.datasets[0].data[i] = result.scores[i];
-		chart.update();
             }
+		chart.update();
         }, {
             includeSpectrogram: true, // in case listen should return result.spectrogram
             probabilityThreshold: 0.75,
