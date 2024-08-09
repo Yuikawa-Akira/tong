@@ -14,7 +14,42 @@
 </div>
     
 <script type="text/javascript">
-	var ctx = document.getElementById("chart").getContext('2d');//追加
+	//グラフ追加
+	var ctx = document.getElementById("chart").getContext('2d');
+	var myChart = new Chart(ctx, {
+        type: "horizontalBar",
+        data: {
+            labels:  ["トング", "雑音"],  // Ｘ軸のラベル
+            datasets: [
+                {
+                    data: [result.scores[0], result.scores[1]] ,
+                    backgroundColor: ["red",  "blue"],
+                },     
+            ]
+        },
+	options: {
+			tooltips: {
+            		enabled: false,
+					},
+			legend: {
+   					display: false,
+   					},
+            responsive: true,
+            scales: {
+                xAxes: [{
+			stacked: true,
+                }],
+                yAxes: [{
+			stacked: true,
+                        display: true,
+                        ticks: {
+                            min: 0,
+                            max: 1,
+                        },
+                }],
+            },
+        }
+    });
     // more documentation available at
     // https://github.com/tensorflow/tfjs-models/tree/master/speech-commands
 
@@ -55,40 +90,7 @@
                 const classPrediction = classLabels[i] + ": " + result.scores[i].toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
             }
-	var myChart = new Chart(ctx, {
-        type: "horizontalBar",
-        data: {
-            labels:  ["トング", "雑音"],  // Ｘ軸のラベル
-            datasets: [
-                {
-                    data: [result.scores[0], result.scores[1]] ,
-                    backgroundColor: ["red",  "blue"],
-                },     
-            ]
-        },
-	options: {
-			tooltips: {
-            		enabled: false,
-					},
-			legend: {
-   					display: false,
-   					},
-            responsive: true,
-            scales: {
-                xAxes: [{
-			stacked: true,
-                }],
-                yAxes: [{
-			stacked: true,
-                        display: true,
-                        ticks: {
-                            min: 0,
-                            max: 1,
-                        },
-                }],
-            },
-        }
-    });
+			chart.update();//グラフ更新
         }, {
             includeSpectrogram: true, // in case listen should return result.spectrogram
             probabilityThreshold: 0.75,
