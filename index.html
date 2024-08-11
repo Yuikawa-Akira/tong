@@ -37,11 +37,11 @@ async function createModel() {
   return recognizer;
 }
 var newdata = {
-  labels: ["トング", "雑音"],
+  labels: ["雑音", "トング"],
   datasets: [
     {
       data: [0, 0],
-      backgroundColor: ["red", "blue"]
+      backgroundColor: ["blue", "red"]
     }
   ]
 };
@@ -102,8 +102,10 @@ async function init() {
         const classPrediction =
           classLabels[i] + ": " + result.scores[i].toFixed(2);
         labelContainer.childNodes[i].innerHTML = classPrediction;
-        newdata.datasets[0].data[i] = result.scores[i].toFixed(2) * 100;
+        //newdata.datasets[0].data[i] = result.scores[i].toFixed(2) * 100;
       }
+      newdata.datasets[0].data[0] = result.scores[1].toFixed(2) * 100;
+      newdata.datasets[0].data[1] = result.scores[0].toFixed(2) * 100;
       chart.update();
     },
     {
